@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>이솝_리뉴얼</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- 스와이퍼슬라이드 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <!-- 스와이퍼 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+
+    <script>
+
+        $(function () {
+
+            $('.loading').click(function () {
+
+
+                $('.loading').fadeOut()
+                $('.typing-demo').addClass('on')
+
+            });
+
+
+            var cursor = $(".cursor"),
+                follower = $(".cursor-follower");
+            var posX = 0,
+                posY = 0;
+            var mouseX = 0,
+                mouseY = 0;
+
+            TweenMax.to({}, 0.016, {
+                repeat: -1,
+                onRepeat: function () {
+                    posX += (mouseX - posX) / 9;
+                    posY += (mouseY - posY) / 9;
+
+                    TweenMax.set(follower, {
+                        css: {
+                            left: posX - 12,
+                            top: posY - 12
+                        }
+                    });
+                    TweenMax.set(cursor, {
+                        css: {
+                            left: mouseX,
+                            top: mouseY
+                        }
+                    });
+                }
+            });
+
+
+            $(document).on("mousemove", function (e) {
+               
+                mouseX = e.pageX;
+                mouseY = e.pageY;
+            });
+
+
+            let searchImg = $('header .inner .right .search img');
+
+            $('.search_box').fadeOut();
+
+            searchImg.click(function () {
+                let searchBox = $('.search_box').css('display') == 'none'
+
+                if (searchBox) {
+                    $('.search_box').slideDown()
+                    $('.search_box input').addClass('on')
+                } else {
+                    $('.search_box input').removeClass('on')
+                    $('.search_box').slideUp()
+                }
+
+
+            });
+
+            //button end
+
+
+            let loginSpan = $('header .right > span a');
+            let loginInner = $('header .inner .login');
+
+            loginSpan.click(function () {
+                loginInner.css({
+                    'display': 'block'
+                })
+            });
+
+
+            let loginClose = $('header .inner .login .inner .close');
+
+            loginClose.click(function () {
+                loginInner.css({
+                    'display': 'none'
+                });
+            });
+
+            //login end
+
+            var swiper = new Swiper(".mySwiper", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            }); //swiper end
+
+
+            var swiper = new Swiper(".mySwiper2", {
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+            //swiper2 end
+
+            var swiper = new Swiper(".mySwiper3", {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                freeMode: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+            //swiper3 end
+
+            let menuOpen = $('.open_menu');
+            let menuClose = $('.close_menu');
+
+
+            menuOpen.click(function () {
+                $('nav').animate({
+                    'right': '0',
+                });
+
+            }); //menuOpen.click()
+
+            menuClose.click(function () {
+                $('nav').animate({
+                    'right': '-100%'
+                });
+            });//menuOpen.click()
+
+            let depth01 = $('.depth01 > a');
+
+            depth01.click(function () {
+                if ($(this).next().css('display') == 'none') {
+                    $('.depth02').slideUp();
+                    $(this).next().slideDown();
+                } else {
+                    $(this).next().slideUp();
+                }
+            });
+
+
+
+        })//jQuery end
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+    <div id="wrab">
+
+        <div class="loading">
+            <p><a href="#">A e s o p</a></p>
+            <video autoplay muted loop>
+                <source src="img/Aesop_video.mp4" type="video/mp4" />
+            </video>
+
+        </div> <!-- .loading end -->
+        <div class="cursor"></div>
+        <div class="cursor-follower"></div>
+        <header>
+
+            <div class="inner">
+                <h1><img src="img/logo.png" alt="이솝로고"></h1>
+
+                <div class="right">
+                    <span><a href="#">Login</a></span>
+                    <div class="login">
+                        <div class="inner">
+                            <div class="close">
+                                <img src="img/close.png" alt="닫기">
+                            </div> <!-- .close end -->
+
+                            <div class="from">
+                                <form action="" method="post">
+                                    <h3>A e s o p</h3>
+                                    <fieldset>
+
+                                        <div class="box">
+                                            <label for="name">이메일주소</label>
+                                            <input type="text" id="name" placeholder="이메일주소">
+                                        </div> <!-- .box end -->
+
+                                        <div class="box">
+                                            <label for="pass">비밀번호</label>
+                                            <input type="password" id="pass" placeholder="비밀번호">
+                                        </div>
+
+                                        <div class="box1">
+                                            <span>로그인하기</span>
+                                            <ul>
+                                                <li><a href="#">아이디 찾기</a></li>
+                                                <li><a href="#">비밀번호 찾기</a></li>
+                                                <li><a href="#">회원가입</a></li>
+                                            </ul>
+                                        </div> <!-- .box1 end -->
+
+
+                                    </fieldset>
+                                </form>
+                            </div> <!-- .form end -->
+                        </div> <!-- .inner end -->
+                    </div> <!-- .login end -->
+
+                    <div class="search">
+                        <img src="img/search.png" alt="검색">
+                    </div> <!-- .search end -->
+
+                    <div class="open_menu">
+                        <!-- <img src="img/menu.png" alt="메뉴"> -->
+                        <!-- <a href="#" class="menu example5"><span></span></a> -->
+                        <a href="#" class="menu example8"><span></span></a>
+                    </div>
+                    <!-- .open_menu end -->
+
+                </div> <!-- .right end -->
+
+                <div class="search_box">
+
+                    <input type="text" placeholder="제품을 입력해주세요.">
+
+                </div> <!-- .search_box end -->
+
+                <nav>
+
+                    <div class="close_menu">
+                        <span>메뉴닫기</span>
+                    </div> <!-- .close_menu end -->
+
+                    <ul class="gnb">
+
+                        <li class="depth01">
+                            <a href="#">Skin Care</a>
+                            <ul class="depth02">
+                                <li><a href="#">스킨 케어 모두 보기</a></li>
+                                <li><a href="#">클렌저</a></li>
+                                <li><a href="#">각질 제거</a></li>
+                                <li><a href="#">트리트먼트 & 마스크</a></li>
+                                <li><a href="#">토너</a></li>
+                                <li><a href="#">하이드레이터</a></li>
+                                <li><a href="#">립 & 아이</a></li>
+                                <li><a href="#">쉐이빙</a></li>
+                                <li><a href="#">선 케어</a></li>
+                                <li><a href="#">키트</a></li>
+                                <li><a href="#">스킨 케어 번들</a></li>
+                                <li><a href="#">스킨 케어 기프트</a></li>
+                            </ul> <!-- .depth02 end -->
+                        </li> <!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Body & Hand</a>
+                            <ul class="depth02">
+                                <li><a href="#">바디 & 핸드 모두 보기</a></li>
+                                <li><a href="#">핸드</a></li>
+                                <li><a href="#">바디</a></li>
+                                <li><a href="#">퍼스널 케어</a></li>
+                                <li><a href="#">번들</a></li>
+                                <li><a href="#">핸드 및 바디 케어 기프트</a></li>
+                            </ul> <!-- .depth02 end -->
+                        </li> <!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Hair</a>
+                            <ul class="depth02">
+                                <li><a href="#">헤어 모두 보기</a></li>
+                                <li><a href="#">샴푸</a></li>
+                                <li><a href="#">컨디셔너</a></li>
+                                <li><a href="#">트리트먼트</a></li>
+                                <li><a href="#">그루밍</a></li>
+                            </ul> <!-- .depth02 end -->
+                        </li> <!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Fragrance</a>
+                            <ul class="depth02">
+                                <li><a href="#">향수 모두 보기</a></li>
+                                <li><a href="#">글롬</a></li>
+                                <li><a href="#">이더시스</a></li>
+                                <li><a href="#">미라세티</a></li>
+                                <li><a href="#">카르스트</a></li>
+                                <li><a href="#">에레미아</a></li>
+                                <li><a href="#">로즈</a></li>
+                                <li><a href="#">휠</a></li>
+                                <li><a href="#">마라케시</a></li>
+                                <li><a href="#">테싯</a></li>
+                            </ul> <!-- .depth02 end -->
+                        </li> <!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Home</a>
+                            <ul class="depth02">
+                                <li><a href="#">홈 모두 보기</a></li>
+                                <li><a href="#">홈</a></li>
+                                <li><a href="#">문학</a></li>
+                                <li><a href="#">홈 케어 기프트</a></li>
+                            </ul> <!-- .depth02 end -->
+                        </li> <!-- .depth01 end -->
+
+
+                    </ul> <!-- .gnb end  -->
+
+                </nav>
+            </div> <!-- .inner end -->
+
+
+        </header>
+
+        <section class="main_01">
+
+            <video autoplay muted loop>
+                <source src="img/Aesop_video.mp4" type="video/mp4" />
+            </video>
+
+            <div class="wrapper">
+                <h1>A e s o p</h1>
+                <p class="typing-demo">이솝은 세심하게 고안되어 효과적이면서도, 감각적인 즐거움을 선사하는 스킨, 헤어, 바디 케어 제품을 제공합니다.</p>
+            </div>
+
+
+        </section> <!-- .main_01 end -->
+
+        <section class="cont01">
+            <h1><img src="img/logo.png" alt="이솝로고"></h1>
+            <img src="img/banner.jpg" alt="Body & Hand">
+            <div class="image">
+                <img src="img/제품1.png" alt="화장품">
+            </div> <!-- .image end -->
+
+            <div>
+                <strong>A e s o p</strong>
+                <h3>Body & Hand</h3>
+                <p>
+                    이솝의 바디와 핸드 제품은 효과적인 클렌징, 수분 공급, 퍼스널 케어에<br>
+                    따른 고민 완화 등 일상적일 수 있는 경험을 한층 풍성하게 만들어줍니다.
+                </p>
+                <span>더보기</span>
+            </div>
+
+        </section> <!-- .cont01 end -->
+
+        <section class="cont02">
+            <h1><img src="img/logo.png" alt="이솝로고"></h1>
+            <img src="img/banner2.jpg" alt="Fragrance">
+
+            <div class="text_slide">
+                <p>
+                    Our fragrances are created with the hope that you find wearing them as pleasurable as we find
+                    developing them. Each fall into one—or, on occasion, two—of the following fragrance families:
+                    floral, fresh, woody and opulent.
+
+                    Our fragrances are created with the hope that you find wearing them as pleasurable as we find
+                    developing them. Each fall into one—or, on occasion, two—of the following fragrance families:
+                    floral, fresh, woody and opulent.
+
+                </p>
+            </div> <!-- .text_slide end -->
+
+            <div>
+                <h3>Fragrance</h3>
+                <p>이솝 향수는 개발하는 동안 느꼈던 즐거움을 고객들이 사용하면서 만끽할<br>
+                    수 있기를 바라며 만들어졌습니다. 각각의 향수는 플로럴, 프레쉬, 우디,<br>
+                    오퓰런트 계열로 나뉘며, 경우에 따라 두 가지에 속하기도 합니다.</p>
+                <span><a href="sub/sub_index.html" target="_blank">더보기</a></span>
+            </div>
+
+
+
+        </section> <!-- .cont02 end -->
+
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><a href="#"><img src="img/bn/bn01.jpg" alt="bn1"></a></div>
+                <div class="swiper-slide"><a href="#"><img src="img/bn/bn02.jpg" alt="bn2"></a></div>
+                <div class="swiper-slide"><a href="#"><img src="img/bn/bn03.jpg" alt="bn3"></a></div>
+                <div class="swiper-slide"><a href="#"><img src="img/bn/bn04.jpg" alt="bn4"></a></div>
+                <div class="swiper-slide"><a href="#"><img src="img/bn/bn05.jpg" alt="bn5"></a></div>
+            </div>
+
+        </div> <!-- swiper end -->
+
+        <!-- Swiper -->
+
+
+        <section class="list">
+
+            <div class="text">
+                <span>AESOP</span>
+                <h1>보살핌의 표현</h1>
+                <p>이솝 제품은 피부를 세정하고 영양과 수분을 채워주는 등 몸이 필요한 관리를 제공해줍니다. <br> 각 제품의 독특한 기분 좋은 아로마가 감각적인 즐거움을 선사합니다.
+                </p>
+
+            </div> <!-- .text end -->
+
+            <div class="swiper mySwiper3">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <img src="img/item01.jpg" alt="리프레시 바 솝">
+                        <div>
+                            <h3>리프레시 바 솝</h3>
+                            <p>활기를 북돋우는 꼼꼼한 클렌징을 제공합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img/item02.jpg" alt="폴리시 바 솝">
+                        <div>
+                            <h3>폴리시 바 솝</h3>
+                            <p>피부를 꼼꼼하게 세정하고 각질을 관리합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img/item03.jpg" alt="너처 바 솝">
+                        <div>
+                            <h3>너처 바 솝</h3>
+                            <p>순하면서도 효과적인 클렌징을 선사합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img/item01_1.jpg" alt="리프레시 바디 클렌징 슬랩">
+                        <div>
+                            <h3>리프레시 바디 클렌징 슬랩</h3>
+                            <p>넉넉한 크기의 클렌징 슬랩</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img/item01-2.png" alt="너처 바 솝">
+                        <div>
+                            <h3>제라늄 리프 바디 스크럽</h3>
+                            <p>피부를 상쾌하고 매끄럽고 부드럽게 관리합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img/item01-3.png" alt="제라늄 리프 바디 클렌저">
+                        <div>
+                            <h3>제라늄 리프 바디 클렌저</h3>
+                            <p>상쾌함을 선사하는 부드러운 젤 타입 클렌저</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="img/item01-4.png" alt="라인드 컨센트레이트 바디 밤">
+                        <div>
+                            <h3>라인드 컨센트레이트 바디 밤</h3>
+                            <p>상쾌함을 선사하는 시트러스향 </p>
+                        </div>
+                    </div>
+
+                </div> <!-- .swiper-slide end -->
+            </div> <!-- .swiper end -->
+        </section> <!-- .list end -->
+
+
+        <section class="list2">
+
+            <div class="inner">
+                <figure>
+                    <a href="#"><img class="img" src="img/list2_item1 (1)_1.jpg" alt=""></a>
+                    <a href="https://www.aesop.com/kr/c/skin/" title="스킨케어 모두보기" target="_blank"><img class="img-hover"
+                            src="img/list2_item1 (1).jpg" alt=""></a>
+                </figure>
+
+                <figure>
+                    <a href="#"><img class="img" src="img/list2_item1 (2)_2.jpg" alt=""></a>
+                    <a href="https://www.aesop.com/kr/p/body-hand/body-hand-bundles/reviving-citrus-duo/"
+                        title="바디 클렌저 바로가기" target="_blank"><img class="img-hover" src="img/list2_item1 (2).jpg"
+                            alt=""></a>
+                </figure>
+
+                <figure>
+                    <a href="#"><img class="img" src="img/list2_item1 (3)_3.jpg" alt=""></a>
+                    <a href="https://www.aesop.com/kr/c/body-hand/hand/" title="핸드크림 바로가기" target="_blank"><img
+                            class="img-hover" src="img/list2_item1 (3).jpg" alt=""></a>
+                </figure>
+
+                <figure>
+                    <a href="#"><img class="img" src="img/list2_item1 (4)_4.jpg" alt=""></a>
+                    <a href="https://www.aesop.com/kr/c/hair/" title="헤어케어 모두보기" target="_blank"><img class="img-hover"
+                            src="img/list2_item1 (4).jpg" alt=""></a>
+                </figure>
+
+                <figure>
+                    <a href="#"><img class="img" src="img/list2_item1 (5)_5.jpg" alt=""></a>
+                    <a href="https://www.aesop.com/kr/c/body-hand/" title="핸드 모부보기" target="_blank"><img
+                            class="img-hover" src="img/list2_item1 (5).jpg" alt=""></a>
+                </figure>
+
+                <figure>
+                    <a href="#"><img class="img" src="img/list2_item1 (6)_6.jpg" alt=""></a>
+                    <a href="https://www.aesop.com/kr/c/body-hand/" title="바디헤어 모두보기" target="_blank"><img
+                            class="img-hover" src="img/list2_item1 (6).jpg" alt=""></a>
+                </figure>
+
+            </div> <!-- .inner end -->
+
+        </section> <!-- .list2 end -->
+
+        <div class="cont03">
+
+            <div class="text">
+                <h3>Aesop Store</h3>
+                <p>매장에서는 이솝 컨설턴트가 고객 여러분을 따뜻하게<br>
+                    맞이하고 기프트 구매를 위한 맞춤형 컨설팅을 제공해드립니다.</p>
+                <span><a href="https://www.aesop.com/kr/?visitMenu=open" target="_blank">MORE</a></span>
+            </div> <!-- .text end -->
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/sub_bn/01.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/sub_bn/02.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/sub_bn/03.jpg" alt=""></div>
+                </div>
+
+            </div> <!-- .swiper end -->
+
+        </div> <!-- .cont03 end -->
+
+        <div class="cont04">
+            <span>백그라운드이미지</span>
+        </div> <!-- .cont04 end -->
+
+
+
+        <footer>
+
+            <div class="inner">
+                <ul class="in">
+                    <li><a href="#">© Aesop</a></li>
+                    <li><a href="#">이솝 커뮤니케이션</a></li>
+                    <li><a href="#">주문 및 지원</a></li>
+                    <li><a href="#">서비스</a></li>
+                    <li><a href="#">위치 기본 설정</a></li>
+                    <li><a href="#">소개</a></li>
+                    <li><a href="#">주의</a></li>
+                </ul>
+
+                <ul class="sns">
+                    <li><a href="https://www.instagram.com/aesopskincare/" target="_blank"><img src="img/sns/insta.png"
+                                alt="이솝 인스타그램"></a></li>
+                    <li><a href="https://www.facebook.com/Aesop/?locale=ko_KR" target="_blank"><img
+                                src="img/sns/face.png" alt="이솝 페이스북"></a></li>
+                    <li><a href="https://au.linkedin.com/company/aesop" target="_blank"><img src="img/sns/in.png"
+                                alt="이솝 링크인"></a></li>
+                </ul> <!-- .sns end -->
+
+            </div> <!-- .inner end -->
+
+        </footer>
+
+    </div> <!-- #wrab end -->
+    <script>
+
+    </script>
+</body>
+
+</html>
