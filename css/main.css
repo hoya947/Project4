@@ -54,6 +54,14 @@ body {
 		0.2s ease-in-out opacity;
 	
 }
+
+.cursor > p {
+    color: #fff;
+    font-weight: 100;
+    position: absolute;
+    left: 15px;
+}
+
 .cursor:active {
     opacity: 0.5;
     transform: scale(0);

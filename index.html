@@ -17,7 +17,7 @@
     <!-- 스와이퍼 js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    
+
 
     <script>
 
@@ -28,6 +28,8 @@
 
                 $('.loading').fadeOut()
                 $('.typing-demo').addClass('on')
+
+                $('.cursor > p').fadeOut()
 
             });
 
@@ -62,7 +64,7 @@
 
 
             $(document).on("mousemove", function (e) {
-               
+
                 mouseX = e.pageX;
                 mouseY = e.pageY;
             });
@@ -180,9 +182,6 @@
 
 <body>
 
-
-
-
     <div id="wrab">
 
         <div class="loading">
@@ -192,8 +191,13 @@
             </video>
 
         </div> <!-- .loading end -->
-        <div class="cursor"></div>
+
+        <div class="cursor">
+            <P>Click</P>
+        </div>
+
         <div class="cursor-follower"></div>
+
         <header>
 
             <div class="inner">
